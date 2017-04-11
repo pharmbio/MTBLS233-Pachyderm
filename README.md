@@ -25,9 +25,9 @@ $ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/do
 
 ## Ingest the MTBLS233 dataset from MetaboLights
 
-[MetaboLights](http://www.ebi.ac.uk/metabolights/) offers an FTP service, so we can ingest the MTBLS233 dataset with Linux commands. 
+[MetaboLights](http://www.ebi.ac.uk/metabolights/) offers an FTP service, so we can ingest the MTBLS233 dataset in a terminal. 
 
-1. First open a Jupyter terminal: `New > Terminal`
+1. First open a terminal in your working directory
 2. Ingest the dataset using **wget**:
 
 ```bash
