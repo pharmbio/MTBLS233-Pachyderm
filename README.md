@@ -12,9 +12,6 @@ We assume that you have a Kubernetes cluster or Minikube up and running. Start b
 ```bash
 # For OSX:
 brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@1.3
-```
-or
-```bash
 # For Linux (64 bit):
 $ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.3.17/pachctl_1.3.17_amd64.deb && sudo dpkg -i /tmp/pachctl.deb```
 
