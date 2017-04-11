@@ -1,0 +1,29 @@
+{
+  "pipeline": {
+    "name": "FeatureLinkerUnlabeledQT"
+  },
+  "transform": {
+    "image": "novella/my-openms:2",
+    "cmd": [ "sh" ],
+    "stdin": [ 
+    "dte=$(date '+%d_%m_%Y_%H_%M')",
+    "FILES=$(find /pfs/FeatureFinderMetabo -name \"*.featureXML\")",
+    "FeatureLinkerUnlabeledQT -in $FILES -out /pfs/out/${dte}linkedfeatures.consensusXML"
+    ]
+  },
+  "parallelism_spec": {
+    "strategy": "CONSTANT",
+    "constant": 1
+  },
+  "inputs": [
+    {
+      "repo": {
+        "name": "FeatureFinderMetabo"
+      },
+      "method": {
+        "partition": "REPO",
+        "incremental": "DIFF"
+      }
+    }
+  ]
+}

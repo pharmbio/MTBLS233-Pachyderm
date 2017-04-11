@@ -1,0 +1,33 @@
+{
+  "pipeline": {
+    "name": "FeatureFinderMetabo"
+  },
+  "transform": {
+    "image": "novella/my-openms:2",
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/PeakPickerHiRes/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "dash='_'",
+    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}feat.featureXML",
+    "done"
+    ]
+  },
+  "parallelism_spec": {
+    "strategy": "CONSTANT",
+    "constant": 2 
+  },
+  "inputs": [
+    {
+      "repo": {
+        "name": "PeakPickerHiRes"
+      },
+      "method": {
+        "partition": "FILE",
+        "incremental": "DIFF"
+      }
+    }
+  ]
+}
