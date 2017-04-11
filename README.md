@@ -42,7 +42,7 @@ Also, set up port forwarding so that you can reach Pachyderm:
 ```bash
 pachctl port-forward &
 ```
-It is also possible to deploy Pachyderm into the Cloud and to configure it to use custom object storage options. In the "deployment" folder can be found our custom deployment using GlusterFS and Minio as storage backend in a OpenStack environment. More information can be found [here](http://docs.pachyderm.io/en/v1.3.18/deployment/deploying_on_the_cloud.html). 
+It is also possible to deploy Pachyderm into the Cloud and to configure it to use custom object storage options. In our particular use-case, we made a custom deployment with GlusterFS and Minio as storage backend in a OpenStack environment. More information can be found [here](http://docs.pachyderm.io/en/v1.3.18/deployment/deploying_on_the_cloud.html). 
 
 ### Add the MTBLS233 dataset to Pachyderm
 
@@ -52,9 +52,9 @@ Create a repo called "metabrepo" and upload the dataset into it.
 pachctl put-file metabrepotest master -c -r -p 10 -f .
 ```
 
-## Process the data
+### Process the data
 
-Now that the data is the repository, it’s time to use the execute the pipeline:
+Now that the data is the repository, it’s time to use the execute the pipeline. In the "pipelines" folder can be found our the different jobs composing the pipeline.
 
 ```bash
 pachctl create-pipeline -f ./path/to/PeakPickerHiRes.json
