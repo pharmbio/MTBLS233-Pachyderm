@@ -8,14 +8,22 @@ We aimed at rereating the workflow used in the MTBLS233 study in a distributed m
 
 ## Run the preprocessing workflow
 
-We assume that you have a Kubernetes cluster or Minikube up and running. Start by installing the Pachyderm client:
+We assume that you have a Kubernetes cluster or Minikube up and running. Start by installing the Pachyderm client.
+
+### OSX client
+
 ```bash
 # For OSX:
 brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@1.3
-# For Linux (64 bit):
-$ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.3.17/pachctl_1.3.17_amd64.deb && sudo dpkg -i /tmp/pachctl.deb```
+```
+### Linux client
 
-### Ingest the MTBLS233 dataset from MetaboLights
+```bash
+# For Linux (64 bit):
+$ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.3.17/pachctl_1.3.17_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
+```
+
+## Ingest the MTBLS233 dataset from MetaboLights
 
 [MetaboLights](http://www.ebi.ac.uk/metabolights/) offers an FTP service, so we can ingest the MTBLS233 dataset with Linux commands. 
 
@@ -23,8 +31,6 @@ $ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/do
 2. Ingest the dataset using **wget**:
 
 ```bash
-# Dataset A
+# Dataset
 wget ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS233/*alternate_pos_low_mr.mzML
-# Dataset #B
-wget ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS233/*alternate_pos_high_mr.mzML
 ```
