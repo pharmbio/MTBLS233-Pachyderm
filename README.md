@@ -33,7 +33,7 @@ wget ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/MTBLS233/*alt
 
 ### Deploy Pachyderm on Kubernetes
 
-Here we assume that you have a Kubernetes cluster up and running . In this case, we will describe a simple deployment on a single node using [Minikube](http://kubernetes.io/docs/getting-started-guides/minikube). Deploy Pachyderm using:
+Here we assume that you have a Kubernetes cluster up and running. In this case, we will describe a simple deployment on a single node using [Minikube](http://kubernetes.io/docs/getting-started-guides/minikube). Deploy Pachyderm using:
 
 ```bash
 pachctl deploy local
@@ -56,7 +56,7 @@ pachctl put-file metabrepotest master -c -r -p 10 -f ./path/to/dataset
 
 ### Process the data
 
-Now that the data is in the repository, it’s time to use the execute the pipeline. In the `./pipelines` folder can be found our the different jobs composing the pipeline.
+Now that the data is in the repository, it’s time to use the execute the pipeline. Four different jobs compose the pipeline, which can be found in the `./pipelines`directory.
 
 ```bash
 pachctl create-pipeline -f ./path/to/pipelines/PeakPickerHiRes.json
