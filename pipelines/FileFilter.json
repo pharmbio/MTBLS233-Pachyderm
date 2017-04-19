@@ -1,14 +1,18 @@
 {
   "pipeline": {
-    "name": "FeatureLinker"
+    "name": "FileFilter"
   },
-  "transform": {
+   "transform": {
     "image": "novella/my-openms:2",
-    "cmd": [ "sh" ],
-    "stdin": [ 
-    "dte=$(date '+%d_%m_%Y_%H_%M')",
-    "FILES=$(find /pfs/FeatureFinder -name \"*.featureXML\")",
-    "FeatureLinkerUnlabeledQT -in $FILES -out /pfs/out/${dte}linked.consensusXML -ini /pfs/params/FLparam.ini"
+    "cmd": [ "/bin/bash" ],
+    "stdin": [
+    "for filename in /pfs/FeatureLinker/*;",
+    "do",
+    "shortname=$(basename $filename)",
+    "shortname=${shortname%.*}",
+    "dash='_'",
+    "FileFilter -in ${filename} -out /pfs/out/${shortname}${dash}filter.consensusXML -ini /pfs/params/FileFparam.ini",
+    "done"
     ]
   },
   "parallelism_spec": {
@@ -18,7 +22,7 @@
   "inputs": [
     {
       "repo": {
-        "name": "FeatureFinder"
+        "name": "FeatureLinker"
       },
       "method": {
         "partition": "REPO",
