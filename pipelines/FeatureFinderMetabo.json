@@ -6,7 +6,7 @@
     "image": "novella/my-openms:2",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/PeakPicker/*;",
+    "for filename in /pfs/FileFilter/*;",
     "do",
     "shortname=$(basename $filename)",
     "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}",
