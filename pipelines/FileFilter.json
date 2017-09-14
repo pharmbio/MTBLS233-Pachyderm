@@ -6,37 +6,21 @@
     "image": "novella/my-openms:2",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/FeatureLinker/*;",
+    "for filename in /pfs/mrpo/*;",
     "do",
     "shortname=$(basename $filename)",
-    "shortname=${shortname%.*}",
-    "dash='_'",
-    "FileFilter -in ${filename} -out /pfs/out/${shortname}${dash}filter.consensusXML -ini /pfs/params/FileFparam.ini",
+    "FileFilter -in ${filename} -out /pfs/out/${shortname}",
     "done"
     ]
   },
-  "parallelism_spec": {
-    "strategy": "CONSTANT",
-    "constant": 1
+"parallelism_spec": {
+    "constant": 4
   },
-  "inputs": [
-    {
-      "repo": {
-        "name": "FeatureLinker"
-      },
-      "method": {
-        "partition": "REPO",
-        "incremental": "DIFF"
-      }
-    },
-    {
-      "repo": {
-        "name": "params"
-        },
-      "method": {
-        "partition": "REPO",
-        "incremental": "DIFF"
-      }
+ "input": {
+    "atom": {
+      "repo": "mrpo",
+      "glob": "/*"
     }
-  ]
+  },
+  "scale_down_threshold": "5m"
 }

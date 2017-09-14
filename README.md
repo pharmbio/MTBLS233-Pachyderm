@@ -14,7 +14,7 @@ Start by installing the Pachyderm client:
 # For OSX:
 brew tap pachyderm/tap && brew install pachyderm/tap/pachctl@1.3
 # For Linux (64 bit):
-$ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.3.17/pachctl_1.3.17_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
+$ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.5.0/pachctl_1.5.0_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
 ```
 
 ### Ingest the MTBLS233 dataset from MetaboLights
@@ -51,6 +51,9 @@ It is also possible to deploy Pachyderm into the Cloud and to configure it to us
 Create a repo called `mrpo` and push the dataset into it. 
 
 ```bash
+<<<<<<< HEAD
+pachctl put-file mrpo master -c -r -p 10 -f ./path/to/dataset
+=======
 # Dataset upload 
 pachctl create-repo mrpo
 pachctl put-file mrpo master -c -r -p 10 -f ./path/to/dataset
@@ -62,6 +65,7 @@ Moreover, create a repo called `params` and push the contents of the `openms-par
 # Configuration files upload 
 pachctl create-repo params
 pachctl put-file params master -c -r -f ./path/to/openms-params
+>>>>>>> bf5387e269dd27b7aa80ed6a37cf462aaa408004
 ```
 
 ### Process the data
@@ -69,7 +73,7 @@ pachctl put-file params master -c -r -f ./path/to/openms-params
 Now that the data is in the repository, it’s time to use the execute the pipeline. Four different jobs compose the pipeline, which can be found in the `./pipelines`directory.
 
 ```bash
-pachctl create-pipeline -f ./path/to/pipelines/PeakPickerHiRes.json
+pachctl create-pipeline -f ./path/to/pipelines/FileFilter.json
 pachctl create-pipeline -f ./path/to/pipelines/FeatureFinderMetabo.json
 pachctl create-pipeline -f ./path/to/pipelines/FeatureLinkerUnlabeledQT.json
 pachctl create-pipeline -f ./path/to/pipelines/FileFilter.json

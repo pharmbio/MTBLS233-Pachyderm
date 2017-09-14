@@ -4,35 +4,21 @@
   },
   "transform": {
     "image": "novella/my-openms:2",
-    "cmd": [ "sh" ],
+    "cmd": [ "/bin/bash" ],
     "stdin": [ 
     "dte=$(date '+%d_%m_%Y_%H_%M')",
     "FILES=$(find /pfs/FeatureFinder -name \"*.featureXML\")",
-    "FeatureLinkerUnlabeledQT -in $FILES -out /pfs/out/${dte}linked.consensusXML -ini /pfs/params/FLparam.ini"
+    "FeatureLinkerUnlabeledQT -in $FILES -out /pfs/out/${dte}linked.consensusXML"
     ]
   },
-  "parallelism_spec": {
-    "strategy": "CONSTANT",
+"parallelism_spec": {
     "constant": 1
   },
-  "inputs": [
-    {
-      "repo": {
-        "name": "FeatureFinder"
-      },
-      "method": {
-        "partition": "REPO",
-        "incremental": "DIFF"
-      }
-    },
-    {
-      "repo": {
-        "name": "params"
-        },
-      "method": {
-        "partition": "REPO",
-        "incremental": "DIFF"
-      }
+ "input": {
+    "atom": {
+      "repo": "FeatureFinder",
+      "glob": "/"
     }
-  ]
+  },
+  "scale_down_threshold": "1h"
 }

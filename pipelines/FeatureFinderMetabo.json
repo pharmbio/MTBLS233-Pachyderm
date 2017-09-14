@@ -9,34 +9,18 @@
     "for filename in /pfs/PeakPicker/*;",
     "do",
     "shortname=$(basename $filename)",
-    "shortname=${shortname%.*}",
-    "dash='_'",
-    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}${dash}features.featureXML -ini /pfs/params/FFparam.ini",
+    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}",
     "done"
     ]
   },
-  "parallelism_spec": {
-    "strategy": "CONSTANT",
-    "constant": 2 
+"parallelism_spec": {
+    "constant": 2
   },
-  "inputs": [
-    {
-      "repo": {
-        "name": "PeakPicker"
-      },
-      "method": {
-        "partition": "FILE",
-        "incremental": "DIFF"
-      }
-    },
-    {
-      "repo": {
-        "name": "params"
-        },
-      "method": {
-        "partition": "FILE",
-        "incremental": "DIFF"
-      }
+ "input": {
+    "atom": {
+      "repo": "FileFilter",
+      "glob": "/*"
     }
-  ]
+  },
+  "scale_down_threshold": "5m"
 }

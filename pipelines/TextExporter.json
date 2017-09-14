@@ -6,37 +6,23 @@
     "image": "novella/my-openms:2",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/FileFilter/*;",
+    "for filename in /pfs/FeatureLinker/*;",
     "do",
     "shortname=$(basename $filename)",
     "shortname=${shortname%.*}",
     "dash='_'",
-    "TextExporter -in ${filename} -out /pfs/out/${shortname}${dash}tab.csv -ini /pfs/params/TEparam.ini",
+    "TextExporter -in ${filename} -out /pfs/out/${shortname}${dash}tab.csv",
     "done"
     ]
   },
-  "parallelism_spec": {
-    "strategy": "CONSTANT",
+"parallelism_spec": {
     "constant": 1
   },
-  "inputs": [
-    {
-      "repo": {
-        "name": "FileFilter"
-      },
-      "method": {
-        "partition": "REPO",
-        "incremental": "DIFF"
-      }
-    },
-    {
-      "repo": {
-        "name": "params"
-        },
-      "method": {
-        "partition": "REPO",
-        "incremental": "DIFF"
-      }
+ "input": {
+    "atom": {
+      "repo": "FeatureLinker",
+      "glob": "/*"
     }
-  ]
+  },
+  "scale_down_threshold": "5m"
 }
