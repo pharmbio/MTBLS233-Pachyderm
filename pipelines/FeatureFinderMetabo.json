@@ -9,7 +9,8 @@
     "for filename in /pfs/FileFilter/*;",
     "do",
     "shortname=$(basename $filename)",
-    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}",
+    "shortname=${shortname%.*}",
+    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}.featureXML",
     "done"
     ]
   },
