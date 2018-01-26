@@ -3,13 +3,13 @@
     "name": "FileFilter"
   },
    "transform": {
-    "image": "novella/my-openms:2",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/mrpo/*;",
     "do",
     "shortname=$(basename $filename)",
-    "FileFilter -in ${filename} -out /pfs/out/${shortname}",
+    "FileFilter -in ${filename} -out /pfs/out/${shortname} -rt 100:500 -mz 100:500",
     "done"
     ]
   },

@@ -3,7 +3,7 @@
     "name": "FeatureFinder"
   },
   "transform": {
-    "image": "novella/my-openms:2",
+    "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
     "cmd": [ "/bin/bash" ],
     "stdin": [
     "for filename in /pfs/FileFilter/*;",
@@ -14,13 +14,14 @@
     "done"
     ]
   },
-"parallelism_spec": {
-    "constant": 2
+  "parallelism_spec": {
+    "constant": 4
   },
- "input": {
+  "input": {
     "atom": {
       "repo": "FileFilter",
       "glob": "/*"
     }
   },
+  "scale_down_threshold": "5m"
 }
