@@ -40,7 +40,7 @@ pachctl put-file mrpo master -c -r -p 3 -f .
 
 ### Process the data
 
-Now that the data is in the repository, it’s time to use the execute the pipeline. Four different jobs compose the pipeline, which can be found in the `./pipelines`directory.
+Now that the data is in the repository, it’s time to use the execute the pipeline. Four different jobs compose the pipeline, which can be found in the `./pipelines`directory. You can learn how to customise your pipelines in detail by visiting: http://docs.pachyderm.io/en/v1.6.7/reference/pipeline_spec.html
 
 ```bash
 pachctl create-pipeline -f ./path/to/pipelines/FileFilter.json
