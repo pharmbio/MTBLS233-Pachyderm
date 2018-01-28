@@ -11,14 +11,14 @@ The workflow was originally implemeted in [OpenMS](https://www.openms.de/) v. 1.
 Once you are logged into the master node, start by installing the Pachyderm client:
 
 ```bash
-$ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.6.7/pachctl_1.6.7_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
+$ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.6.6/pachctl_1.6.6_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
 ```
 
 ### Ingest the MTBLS233 dataset from MetaboLights
 
 [MetaboLights](http://www.ebi.ac.uk/metabolights/) offers an FTP service, so we can ingest the MTBLS233 dataset in a terminal. 
 
-1. First create a folder where you will sotre the data and navigate to it
+1. First create a folder where you will store the data and navigate to it
 2. Ingest the dataset using **wget**:
 
 ```bash
@@ -40,7 +40,7 @@ pachctl put-file mrpo master -c -r -p 3 -f .
 
 ### Process the data
 
-Now that the data is in the repository, it’s time to use the execute the pipeline. Four different jobs compose the pipeline, which can be found in the `./pipelines`directory. You can learn how to customise your pipelines in detail by visiting: http://docs.pachyderm.io/en/v1.6.7/reference/pipeline_spec.html
+Now that the data is in the repository, it’s time to use the execute the pipeline. Four different jobs compose the pipeline, which can be found in the `./pipelines`directory. You can learn how to customise your pipelines in detail by visiting: http://docs.pachyderm.io/en/v1.6.6/reference/pipeline_spec.html
 
 ```bash
 pachctl create-pipeline -f ./path/to/pipelines/FileFilter.json
