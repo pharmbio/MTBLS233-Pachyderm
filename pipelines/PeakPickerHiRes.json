@@ -1,16 +1,15 @@
 {
   "pipeline": {
-    "name": "FeatureFinder"
+    "name": "PeakPicker"
   },
   "transform": {
     "image": "container-registry.phenomenal-h2020.eu/phnmnl/openms:v2.1.0_cv0.2.15",
     "cmd": [ "/bin/bash" ],
     "stdin": [
-    "for filename in /pfs/PeakPicker/*;",
+    "for filename in /pfs/FileFilter/*;",
     "do",
     "shortname=$(basename $filename)",
-    "shortname=${shortname%.*}",
-    "FeatureFinderMetabo -in ${filename} -out /pfs/out/${shortname}.featureXML",
+    "PeakPickerHiRes -in ${filename} -out /pfs/out/${shortname}",
     "done"
     ]
   },
@@ -19,9 +18,9 @@
   },
   "input": {
     "atom": {
-      "repo": "PeakPicker",
+      "repo": "FileFilter",
       "glob": "/*"
     }
   },
-  "scale_down_threshold": "5m"
+  "scale_down_threshold": "10m"
 }

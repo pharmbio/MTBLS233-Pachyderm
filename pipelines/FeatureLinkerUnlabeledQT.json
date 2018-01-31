@@ -20,5 +20,5 @@
       "glob": "/"
     }
   },
-  "scale_down_threshold": "1h"
+  "scale_down_threshold": "5m"
 }

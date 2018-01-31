@@ -44,6 +44,7 @@ Now that the data is in the repository, it’s time to use the execute the pipel
 
 ```bash
 pachctl create-pipeline -f ./path/to/pipelines/FileFilter.json
+pachctl create-pipeline -f ./path/to/pipelines/PeakPickerHiRes.json
 pachctl create-pipeline -f ./path/to/pipelines/FeatureFinderMetabo.json
 pachctl create-pipeline -f ./path/to/pipelines/FeatureLinkerUnlabeledQT.json
 pachctl create-pipeline -f ./path/to/pipelines/TextExporter.json
