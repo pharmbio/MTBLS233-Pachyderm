@@ -8,11 +8,15 @@ The workflow was originally implemeted in [OpenMS](https://www.openms.de/) v. 1.
 
 ## Run the preprocessing workflow
 
-Once you are logged into the master node, start by installing the Pachyderm client:
+Once you are logged into the master node, start by making sure that Pachyderm is up and running:
 
 ```bash
-$ curl -o /tmp/pachctl.deb -L https://github.com/pachyderm/pachyderm/releases/download/v1.6.6/pachctl_1.6.6_amd64.deb && sudo dpkg -i /tmp/pachctl.deb
+$ pachctl version
 ```
+
+If everything goes fine, you should see the version of the Pachyderm daemon and the `pachctl` version.
+
+Note: In order for Pachyderm to be accessible in your cluster, you need to first uncomment the `install-pachyderm-minio-playbook` from your deployment template.
 
 ### Ingest the MTBLS233 dataset from MetaboLights
 
